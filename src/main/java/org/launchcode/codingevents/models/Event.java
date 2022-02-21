@@ -1,5 +1,6 @@
 package org.launchcode.codingevents.models;
 
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -24,11 +25,25 @@ public class Event {
     @Email(message = "Invalid email. Try again.")
     private String contactEmail;
 
-    public Event(String name, String description, String contactEmail) {
+    @NotBlank(message = "Location is required")
+    private String location;
+
+    @AssertTrue
+    private Boolean mustRegister;
+
+    @Size(min = 1)
+    private Integer attendeeQty;
+
+    public Event(String name, String description, String contactEmail,
+                 String location, Boolean mustRegister, Integer attendeeQty) {
         this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
+        this.location = location;
+        this.mustRegister = mustRegister;
+        this.attendeeQty = attendeeQty;
+
     }
 
     public Event() {

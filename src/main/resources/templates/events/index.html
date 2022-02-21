@@ -12,13 +12,19 @@
             <th>Name</th>
             <th>Description</th>
             <th>Contact Email</th>
+            <th>Location</th>
+            <th>Registration Required</th>
+            <th>Attendee Quantity</th>
+
         </tr>
     </thead>
     <tr th:each="event : ${events}">
         <td th:text="${event.id}"></td>
         <td th:text="${event.name}"></td>
         <td th:text="${event.description}"></td>
-        <td th:text="${event.contactEmail}"></td>
+        <td th:text="${event.location}"></td>
+        <td th:text="${event.mustRegister}"></td>
+        <td th:text="${event.attendeeQty}"></td>
     </tr>
 </table>
 
