@@ -1,9 +1,6 @@
 package org.launchcode.codingevents.models;
 
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.Objects;
 
 /**
@@ -29,9 +26,9 @@ public class Event {
     private String location;
 
     @AssertTrue
-    private Boolean mustRegister;
+    private boolean mustRegister;
 
-    @Size(min = 1)
+    @Positive(message = "Number of attendees must be one or more")
     private Integer attendeeQty;
 
     public Event(String name, String description, String contactEmail,
@@ -77,6 +74,30 @@ public class Event {
 
     public int getId() {
         return id;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public boolean isMustRegister() {
+        return mustRegister;
+    }
+
+    public void setMustRegister(boolean mustRegister) {
+        this.mustRegister = mustRegister;
+    }
+
+    public Integer getAttendeeQty() {
+        return attendeeQty;
+    }
+
+    public void setAttendeeQty(Integer attendeeQty) {
+        this.attendeeQty = attendeeQty;
     }
 
     @Override
